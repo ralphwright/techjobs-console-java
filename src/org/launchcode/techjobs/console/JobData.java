@@ -9,6 +9,7 @@ import java.io.IOException;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.List;
 
 /**
@@ -82,6 +83,23 @@ public class JobData {
         }
 
         return jobs;
+    }
+
+    public static void findByValue(String jobValue) {
+        loadData();
+
+        for (HashMap<String, String> job : allJobs) {
+            for (Map.Entry<String, String> entry : job.entrySet()) {
+                if (entry.getValue().toLowerCase().contains(jobValue.toLowerCase())) {
+                    System.out.println("*****");
+                    for (Map.Entry<String, String> entry2 : job.entrySet()) {
+                        System.out.println(entry2.getKey() + ": " + entry2.getValue());
+                    }
+                    break;
+
+                }
+            }
+        }
     }
 
     /**
